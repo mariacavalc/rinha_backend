@@ -1,8 +1,8 @@
 package org.madu.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.madu.database.service.PessoaStackService;
 import org.madu.entities.Pessoa;
-import org.madu.util.RequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +22,11 @@ public class PessoaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Pessoa pessoa) {
+    public void create(@RequestBody Pessoa pessoa, HttpServletResponse response) {
         validate(pessoa);
+
         service.insertPessoaAndStacks(pessoa);
+
+        response.addHeader("Location", "/pessoas/" + pessoa.getId().toString());
     }
 }

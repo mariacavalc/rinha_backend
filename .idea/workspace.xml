@@ -4,29 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/annotation/ArrayPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/controller/PessoaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/initializer/DatabaseInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaStackService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/StackService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/entities/Pessoa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/exception/BadRequestException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/exception/UnprocessableEntityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/util/RequestValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/util/UuidUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="POST /pessoas">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/controller/PessoaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/controller/PessoaController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,17 +75,27 @@
       <option name="presentableId" value="Default" />
       <updated>1691861917609</updated>
     </task>
+    <task id="LOCAL-00001" summary="POST /pessoas">
+      <option name="closed" value="true" />
+      <created>1691966397776</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691966397776</updated>
+    </task>
+    <task id="LOCAL-00002" summary="POST /pessoas">
+      <option name="closed" value="true" />
+      <created>1691966479345</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691966479345</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaService.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="POST /pessoas" />
+    <option name="LAST_COMMIT_MESSAGE" value="POST /pessoas" />
   </component>
 </project>
