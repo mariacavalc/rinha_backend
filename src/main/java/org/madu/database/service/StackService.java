@@ -4,6 +4,7 @@ import org.madu.entities.Pessoa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
@@ -40,4 +41,13 @@ public class StackService {
             }
         });
     }
+
+    public void getStacks(Pessoa pessoa) {
+        String sql = "SELECT s.nome FROM stack s WHERE s.id_pessoa = ?";
+
+        List<String> stacks = jdbcTemplate.query(sql, stackRowMapper, new Object[]{getBytesFromUuid(pessoa.getId())});
+        pessoa.setStack(stacks.isEmpty() ? null : stacks);
+    }
+
+    private final RowMapper<String> stackRowMapper = (resultSet, rowNum) -> resultSet.getString("nome");
 }
