@@ -2,9 +2,12 @@ version: '3'
 
 services:
   db:
-    image: mysql:latest
+    image: 'postgres:14.1-alpine'
     restart: always
+    container_name: db
     environment:
-      MYSQL_ROOT_PASSWORD: r00t
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: rinha_backend
     ports:
-      - "3306:3306"
+      - "5432:5432"

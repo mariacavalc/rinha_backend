@@ -16,49 +16,33 @@ public class DatabaseInitializer {
 
     public void createTables() {
         createPessoaTable();
-
-        createStackTable();
     }
 
     private void createPessoaTable() {
-        if (tableExists("pessoa")) {
+        if (tableExists()) {
             log.info("The 'pessoa' table already exists");
             return;
         }
 
         log.info("Creating 'pessoa' table");
-        String createPessoaTable = "CREATE TABLE `pessoa` (" +
-                "  `apelido` varchar(32) NOT NULL," +
-                "  `nome` varchar(100) NOT NULL," +
-                "  `nascimento` date NOT NULL," +
-                "  `id` binary(16) NOT NULL," +
-                "  PRIMARY KEY (`id`)," +
-                "  UNIQUE KEY `pessoa_UN` (`apelido`)" +
-                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
+        String createPessoaTable = "CREATE TABLE pessoa (" +
+                "apelido varchar(32) NOT NULL," +
+                "nome varchar(100) NOT NULL," +
+                "id uuid NOT NULL," +
+                "nascimento date NOT NULL," +
+                "stack varchar(32)[] NULL," +
+                "CONSTRAINT pessoa_pk PRIMARY KEY (id)," +
+                "CONSTRAINT pessoa_un UNIQUE (apelido)" +
+                ");";
 
         jdbcTemplate.execute(createPessoaTable);
+
+        log.info("'pessoa' table created");
     }
 
-    private void createStackTable() {
-        if (tableExists("stack")) {
-            log.info("The 'stack' table already exists");
-            return;
-        }
-
-        log.info("Creating 'stack' table");
-        String createStackTable = "CREATE TABLE `stack` (" +
-                "  `nome` varchar(32) NOT NULL," +
-                "  `id_pessoa` binary(16) NOT NULL," +
-                "  KEY `stack_FK` (`id_pessoa`) USING BTREE," +
-                "  CONSTRAINT `stack_FK` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`)" +
-                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
-
-        jdbcTemplate.execute(createStackTable);
-    }
-
-    private boolean tableExists(String tableName) {
+    private boolean tableExists() {
         String checkTableExistsSQL = "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = ?";
-        Integer count = jdbcTemplate.queryForObject(checkTableExistsSQL, Integer.class, tableName);
+        Integer count = jdbcTemplate.queryForObject(checkTableExistsSQL, Integer.class, "pessoa");
         return !isNull(count) && count > 0;
     }
 }

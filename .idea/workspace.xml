@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="Adding header to response of POST /pessoas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/exception/NotFoundException.java" afterDir="false" />
+    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="refactoring POST /pessoas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/controller/PessoaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/controller/PessoaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaStackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaStackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/database/service/StackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/StackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/entities/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/entities/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/util/UuidUtils.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2TtUYFWvSMiBkY8r6yYOa8GLch9" />
@@ -104,12 +105,62 @@
       <option name="project" value="LOCAL" />
       <updated>1691966996679</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changing database config">
+      <option name="closed" value="true" />
+      <created>1692062912095</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692062912095</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changing database initializer">
+      <option name="closed" value="true" />
+      <created>1692066228089</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692066228089</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactoring POST /pessoas">
+      <option name="closed" value="true" />
+      <created>1692067812609</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692067812609</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="POST /pessoas" />
     <MESSAGE value="Adding header to response of POST /pessoas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding header to response of POST /pessoas" />
+    <MESSAGE value="changing database config" />
+    <MESSAGE value="changing database initializer" />
+    <MESSAGE value="refactoring POST /pessoas" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring POST /pessoas" />
   </component>
 </project>
