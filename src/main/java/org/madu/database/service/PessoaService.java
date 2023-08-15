@@ -70,6 +70,12 @@ public class PessoaService {
         return jdbcTemplate.query(sql, pessoaRowMapper, "%" + searchTerm + "%", "%" + searchTerm + "%", "%" + searchTerm + "%");
     }
 
+    @Transactional
+    public Integer countPessoas() {
+        String sql = "SELECT count(*) FROM pessoa";
+        return jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
     private final RowMapper<Pessoa> pessoaRowMapper = (resultSet, rowNum) -> {
         UUID id = (UUID) resultSet.getObject("id");
         String apelido = resultSet.getString("apelido");
