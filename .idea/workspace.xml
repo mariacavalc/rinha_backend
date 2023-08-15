@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="Adding header to response of POST /pessoas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/madu/exception/NotFoundException.java" afterDir="false" />
+    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="GET /pessoas/[:id]">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/controller/PessoaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/controller/PessoaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaStackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/PessoaStackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/database/service/StackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/service/StackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/entities/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/entities/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2TtUYFWvSMiBkY8r6yYOa8GLch9" />
