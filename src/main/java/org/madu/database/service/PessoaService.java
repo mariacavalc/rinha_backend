@@ -11,6 +11,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -25,16 +26,19 @@ public class PessoaService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Transactional
     public void insertPessoa(Pessoa pessoa) {
         try {
             pessoa.setId(getUuid());
-            String insertPessoaSQL = "INSERT INTO pessoa (apelido, nome, nascimento, id) VALUES (?, ?, ?, ?)";
-            jdbcTemplate.update(connection -> {
-                        PreparedStatement ps = connection.prepareStatement(insertPessoaSQL);
+            String insertPessoaSQL = "INSERT INTO public.pessoa (apelido, nome, nascimento, stack, id) " +
+                    "VALUES(?, ?, ?, ?, ?);";
+            jdbcTemplate.update(conn -> {
+                        PreparedStatement ps = conn.prepareStatement(insertPessoaSQL);
                         ps.setString(1, pessoa.getApelido());
                         ps.setString(2, pessoa.getNome());
                         ps.setDate(3, Date.valueOf(pessoa.getNascimento()));
-                        ps.setBytes(4, getBytesFromUuid(pessoa.getId()));
+                        ps.setArray(4, conn.createArrayOf("varchar", pessoa.getStack()));
+                        ps.setObject(5, pessoa.getId());
                         return ps;
                     }
             );
@@ -43,6 +47,7 @@ public class PessoaService {
         }
     }
 
+    @Transactional
     public Pessoa getPessoa(UUID pessoaId) {
         try {
             String sql = "SELECT p.id, p.apelido, p.nome, p.nascimento FROM pessoa p WHERE p.id = ?";

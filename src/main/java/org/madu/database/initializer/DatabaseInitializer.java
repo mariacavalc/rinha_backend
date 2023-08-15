@@ -28,14 +28,13 @@ public class DatabaseInitializer {
         String createPessoaTable = "CREATE TABLE pessoa (" +
                 "apelido varchar(32) NOT NULL," +
                 "nome varchar(100) NOT NULL," +
-                "id uuid NOT NULL DEFAULT uuid_generate_v4()," +
+                "id uuid NOT NULL," +
                 "nascimento date NOT NULL," +
                 "stack varchar(32)[] NULL," +
                 "CONSTRAINT pessoa_pk PRIMARY KEY (id)," +
                 "CONSTRAINT pessoa_un UNIQUE (apelido)" +
                 ");";
 
-        jdbcTemplate.execute("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";");
         jdbcTemplate.execute(createPessoaTable);
 
         log.info("'pessoa' table created");

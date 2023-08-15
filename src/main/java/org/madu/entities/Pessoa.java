@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -25,5 +24,5 @@ public class Pessoa {
 
     private LocalDate nascimento;
 
-    private List<String> stack;
+    private String [] stack;
 }

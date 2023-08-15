@@ -7,6 +7,7 @@ import org.madu.exception.UnprocessableEntityException;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import static java.util.Arrays.stream;
 import static java.util.Objects.isNull;
 
 public class RequestValidator {
@@ -28,7 +29,7 @@ public class RequestValidator {
             return;
         }
 
-        if (pessoa.getStack().stream().anyMatch(x -> isNull(x) || !x.matches("^(?=.*[a-zA-Z]).{1,32}$"))) {
+        if (stream(pessoa.getStack()).anyMatch(x -> isNull(x) || !x.matches("^(?=.*[a-zA-Z]).{1,32}$"))) {
             throw new BadRequestException();
         }
     }
