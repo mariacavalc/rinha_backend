@@ -4,7 +4,6 @@ import com.github.f4b6a3.ulid.UlidCreator;
 import org.madu.entities.Pessoa;
 import org.madu.exception.NotFoundException;
 import org.madu.exception.UnprocessableEntityException;
-import org.madu.util.UuidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -18,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import static org.madu.util.UuidUtils.getBytesFromUuid;
+import static java.util.Objects.isNull;
 
 @Component
 public class PessoaService {
@@ -30,7 +29,7 @@ public class PessoaService {
     public void insertPessoa(Pessoa pessoa) {
         try {
             pessoa.setId(getUuid());
-            String insertPessoaSQL = "INSERT INTO public.pessoa (apelido, nome, nascimento, stack, id) " +
+            String insertPessoaSQL = "INSERT INTO pessoa (apelido, nome, nascimento, stack, id) " +
                     "VALUES(?, ?, ?, ?, ?);";
             jdbcTemplate.update(conn -> {
                         PreparedStatement ps = conn.prepareStatement(insertPessoaSQL);
@@ -50,21 +49,23 @@ public class PessoaService {
     @Transactional
     public Pessoa getPessoa(UUID pessoaId) {
         try {
-            String sql = "SELECT p.id, p.apelido, p.nome, p.nascimento FROM pessoa p WHERE p.id = ?";
+            String sql = "SELECT p.id, p.apelido, p.nome, p.nascimento, p.stack FROM pessoa p WHERE p.id = ?";
 
-            return jdbcTemplate.queryForObject(sql, pessoaRowMapper, new Object[]{getBytesFromUuid(pessoaId)});
+            return jdbcTemplate.queryForObject(sql, pessoaRowMapper, pessoaId);
         }catch (EmptyResultDataAccessException e){
             throw new NotFoundException();
         }
     }
 
     private final RowMapper<Pessoa> pessoaRowMapper = (resultSet, rowNum) -> {
-        UUID id = UuidUtils.getUuidFromBytes(resultSet.getBytes("id"));
+        UUID id = (UUID) resultSet.getObject("id");
         String apelido = resultSet.getString("apelido");
         String nome = resultSet.getString("nome");
         LocalDate nascimento = resultSet.getDate("nascimento").toLocalDate();
+        String [] stack = isNull(resultSet.getArray("stack")) ? null : (String[]) resultSet.getArray("stack")
+                .getArray();
 
-        return Pessoa.builder().id(id).apelido(apelido).nome(nome).nascimento(nascimento).build();
+        return Pessoa.builder().id(id).apelido(apelido).nome(nome).nascimento(nascimento).stack(stack).build();
     };
 
     private UUID getUuid() {
