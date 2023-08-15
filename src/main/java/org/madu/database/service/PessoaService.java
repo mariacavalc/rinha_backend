@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import static java.util.Objects.isNull;
@@ -55,6 +56,18 @@ public class PessoaService {
         }catch (EmptyResultDataAccessException e){
             throw new NotFoundException();
         }
+    }
+
+    @Transactional
+    public List<Pessoa> queryPessoa(String searchTerm) {
+        String sql = "SELECT p.id, p.apelido, p.nome, p.nascimento, p.stack " +
+                "FROM pessoa p " +
+                "WHERE p.apelido ILIKE ? OR p.nome ILIKE ? OR EXISTS ( " +
+                "  SELECT 1 FROM unnest(p.stack) AS s(element) " +
+                "  WHERE s.element ILIKE ? " +
+                ") LIMIT 50";
+
+        return jdbcTemplate.query(sql, pessoaRowMapper, "%" + searchTerm + "%", "%" + searchTerm + "%", "%" + searchTerm + "%");
     }
 
     private final RowMapper<Pessoa> pessoaRowMapper = (resultSet, rowNum) -> {
