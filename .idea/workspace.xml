@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="GET /pessoas/[:id]">
+    <list default="true" id="615b1166-98a3-4176-9566-24b66a787a98" name="Changes" comment="changing database config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/madu/database/initializer/DatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/madu/database/initializer/DatabaseInitializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,12 +104,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691966996679</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changing database config">
+      <option name="closed" value="true" />
+      <created>1692062912095</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692062912095</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="POST /pessoas" />
     <MESSAGE value="Adding header to response of POST /pessoas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding header to response of POST /pessoas" />
+    <MESSAGE value="changing database config" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing database config" />
   </component>
 </project>
