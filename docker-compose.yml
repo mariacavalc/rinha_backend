@@ -1,13 +1,23 @@
 version: '3'
 
 services:
-  db:
-    image: 'postgres:14.1-alpine'
+  postgres:
+    user: postgres
+    image: 'postgres:latest'
     restart: always
     container_name: db
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pwd
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: rinha_backend
-    ports:
-      - "5432:5432"
+
+  app:
+    image: 'mariacavalc/javinha_rinha_backend:latest'
+    restart: always
+    container_name: app
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/rinha_backend
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+    depends_on:
+      - postgres
