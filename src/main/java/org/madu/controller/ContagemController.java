@@ -1,5 +1,6 @@
-package org.madu.database.service;
+package org.madu.controller;
 
+import org.madu.database.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

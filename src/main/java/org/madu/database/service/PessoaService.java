@@ -47,7 +47,6 @@ public class PessoaService {
         }
     }
 
-    @Transactional
     public Pessoa getPessoa(UUID pessoaId) {
         try {
             String sql = "SELECT p.id, p.apelido, p.nome, p.nascimento, p.stack FROM pessoa p WHERE p.id = ?";
@@ -58,7 +57,6 @@ public class PessoaService {
         }
     }
 
-    @Transactional
     public List<Pessoa> queryPessoa(String searchTerm) {
         String sql = "SELECT p.id, p.apelido, p.nome, p.nascimento, p.stack " +
                 "FROM pessoa p " +
@@ -70,7 +68,6 @@ public class PessoaService {
         return jdbcTemplate.query(sql, pessoaRowMapper, "%" + searchTerm + "%", "%" + searchTerm + "%", "%" + searchTerm + "%");
     }
 
-    @Transactional
     public Integer countPessoas() {
         String sql = "SELECT count(*) FROM pessoa";
         return jdbcTemplate.queryForObject(sql, Integer.class);
