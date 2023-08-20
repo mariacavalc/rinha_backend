@@ -1,6 +1,51 @@
-version: '3'
+version: '3.8'
 
 services:
+  api1:
+    image: 'mariacavalc/javinha_rinha_backend:latest'
+    hostname: api1
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: '0.5GB'
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/rinha_backend
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+
+  api2:
+    image: 'mariacavalc/javinha_rinha_backend:latest'
+    hostname: api2
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: '0.5GB'
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/rinha_backend
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api1
+      - api2
+    ports:
+      - "9999:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: '0.5GB'
+
   postgres:
     user: postgres
     image: 'postgres:latest'
@@ -10,14 +55,9 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: rinha_backend
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: '1.5GB'
 
-  app:
-    image: 'mariacavalc/javinha_rinha_backend:latest'
-    restart: always
-    container_name: app
-    environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/rinha_backend
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
-    depends_on:
-      - postgres
