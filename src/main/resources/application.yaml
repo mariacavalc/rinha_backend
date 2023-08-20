@@ -3,6 +3,13 @@ spring:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/rinha_backend}
     username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:postgres}
+    hikari:
+      maximumPoolSize: 10
+      minimumIdle: 5
+      connectionTimeout: 30000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      auto-commit: false
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
