@@ -1,11 +1,12 @@
 package org.madu.database.initializer;
 
+import jakarta.persistence.LockModeType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-
-import static java.util.Objects.isNull;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Slf4j
@@ -14,18 +15,14 @@ public class DatabaseInitializer {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Transactional
+    @Lock(LockModeType.PESSIMISTIC_READ)
     public void createTables() {
         createPessoaTable();
     }
 
     private void createPessoaTable() {
-        if (tableExists()) {
-            log.info("The 'pessoa' table already exists");
-            return;
-        }
-
-        log.info("Creating 'pessoa' table");
-        String createPessoaTable = "CREATE TABLE pessoa (" +
+        String createPessoaTable = "CREATE TABLE IF NOT EXISTS pessoa (" +
                 "apelido varchar(32) NOT NULL," +
                 "nome varchar(100) NOT NULL," +
                 "id uuid NOT NULL," +
@@ -36,13 +33,5 @@ public class DatabaseInitializer {
                 ");";
 
         jdbcTemplate.execute(createPessoaTable);
-
-        log.info("'pessoa' table created");
-    }
-
-    private boolean tableExists() {
-        String checkTableExistsSQL = "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = ?";
-        Integer count = jdbcTemplate.queryForObject(checkTableExistsSQL, Integer.class, "pessoa");
-        return !isNull(count) && count > 0;
     }
 }
