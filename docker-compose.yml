@@ -9,10 +9,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.25'
+          cpus: '0.325'
           memory: '0.5GB'
     environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/rinha_backend
+      DATABASE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=public
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
 
@@ -24,10 +24,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.25'
+          cpus: '0.325'
           memory: '0.5GB'
     environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/rinha_backend
+      DATABASE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=public
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
 
@@ -43,7 +43,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.25'
+          cpus: '0.15'
           memory: '0.5GB'
 
   postgres:
@@ -58,6 +58,6 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.75'
+          cpus: '0.7'
           memory: '1.5GB'
 
