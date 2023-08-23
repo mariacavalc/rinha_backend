@@ -16,7 +16,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Build
-        run: mvn clean package && docker build . -t rinha-de-backend-2023-q3
+        run: mvn clean package && docker build . -t rinha-de-backend-2023-q3 && sleep 120
   test:
     runs-on: ubuntu-20.04
     needs: build
