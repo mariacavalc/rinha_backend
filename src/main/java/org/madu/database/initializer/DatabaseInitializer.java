@@ -18,10 +18,9 @@ public class DatabaseInitializer {
     @Transactional
     @Lock(LockModeType.PESSIMISTIC_READ)
     public void createTables() {
-        createPessoaTable();
-    }
-
-    private void createPessoaTable() {
+        if (tableExists()) {
+            return;
+        }
         String createPessoaTable = "CREATE TABLE IF NOT EXISTS pessoa (" +
                 "apelido varchar(32) NOT NULL," +
                 "nome varchar(100) NOT NULL," +
@@ -33,5 +32,12 @@ public class DatabaseInitializer {
                 ");";
 
         jdbcTemplate.execute(createPessoaTable);
+        jdbcTemplate.execute("CREATE INDEX idx_nome ON pessoa (nome);");
+        jdbcTemplate.execute("CREATE INDEX idx_apelido ON pessoa (apelido);");
+    }
+
+    private boolean tableExists() {
+        String query = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'pessoa'";
+        return jdbcTemplate.queryForObject(query, Integer.class) > 0;
     }
 }
