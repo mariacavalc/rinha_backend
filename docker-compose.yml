@@ -9,8 +9,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.325'
-          memory: '0.5GB'
+          cpus: '0.15'
+          memory: '0.4GB'
     environment:
       DATABASE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=public
       DATABASE_USERNAME: postgres
@@ -24,8 +24,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.325'
-          memory: '0.5GB'
+          cpus: '0.15'
+          memory: '0.4GB'
     environment:
       DATABASE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=public
       DATABASE_USERNAME: postgres
@@ -58,6 +58,6 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.7'
-          memory: '1.5GB'
+          cpus: '1.05'
+          memory: '1.7GB'
 
